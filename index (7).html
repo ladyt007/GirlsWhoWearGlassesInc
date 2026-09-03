@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls Who Wear Glasses, Inc. | Polish. Poise. Purpose.</title>
+<meta name="description" content="An etiquette &amp; social graces workshop experience for youth (9+) and adults. Co-ed services facilitated by Lynette Shelborne-Barfield.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%23FBF4E9'/%3E%3Cpath d='M58,84 C54,56 76,30 106,30 C128,30 142,42 146,58 C150,50 156,56 154,66 C160,58 158,46 148,38 C158,52 162,72 154,90 C150,100 142,106 134,100 C138,84 132,68 116,62 C100,58 84,62 74,74 C68,80 62,84 58,84 Z' fill='%232E2A26'/%3E%3Crect x='64' y='90' width='32' height='24' rx='11' fill='none' stroke='%232E2A26' stroke-width='6'/%3E%3Crect x='104' y='90' width='32' height='24' rx='11' fill='none' stroke='%232E2A26' stroke-width='6'/%3E%3Cline x1='96' y1='100' x2='104' y2='100' stroke='%232E2A26' stroke-width='6'/%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --ivory:#FBF4E9;
+    --cream-panel:#F3EBDC;
+    --sage:#7C8A6B;
+    --sage-deep:#566048;
+    --terracotta:#BD6240;
+    --terracotta-deep:#9B4E32;
+    --brass:#C99A44;
+    --charcoal:#2E2A26;
+    --blush:#E7C9C6;
+    --greige:#C7C0B4;
+    --white:#ffffff;
+
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+    --container: 1140px;
+    --radius: 4px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--charcoal);
+    background:var(--ivory);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    margin:0;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  ul{margin:0; padding:0;}
+
+  .container{
+    width:100%;
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--terracotta);
+  }
+  .on-dark .eyebrow{color:var(--brass);}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:18px 0 0;
+  }
+  .divider .line{width:42px; height:1px; background:var(--brass); opacity:.7;}
+  .divider .diamond{width:7px; height:7px; background:var(--terracotta); transform:rotate(45deg); flex-shrink:0;}
+  .divider.left{justify-content:flex-start;}
+
+  .section{padding:96px 0;}
+  @media (max-width:720px){ .section{padding:64px 0;} }
+
+  .section-head{max-width:680px; margin:0 auto 56px; text-align:center;}
+  .section-head h2{font-size:clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem); margin-top:.5rem; color:var(--sage-deep);}
+  .section-head.on-dark h2{color:var(--ivory);}
+  .section-head p.lede{margin-top:18px; font-size:1.08rem; color:#4a453f;}
+  .section-head.on-dark p.lede{color:#e9e2d3;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 30px;
+    border-radius:999px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.03em;
+    cursor:pointer;
+    border:1.5px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--terracotta); color:var(--ivory);}
+  .btn-primary:hover{background:var(--terracotta-deep); box-shadow:0 10px 24px -8px rgba(189,98,64,.55);}
+  .btn-outline{background:transparent; border-color:var(--ivory); color:var(--ivory);}
+  .btn-outline:hover{background:rgba(251,244,233,.12);}
+  .btn-outline-dark{background:transparent; border-color:var(--sage-deep); color:var(--sage-deep);}
+  .btn-outline-dark:hover{background:var(--sage-deep); color:var(--ivory);}
+  .section-contact .btn-primary{background:var(--ivory); color:var(--terracotta-deep); border-color:var(--ivory);}
+  .section-contact .btn-primary:hover{background:#fff; box-shadow:0 10px 24px -8px rgba(46,42,38,.35);}
+
+  .badge-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 20px;
+    border-radius:999px;
+    border:1px solid var(--brass);
+    color:var(--brass);
+    font-size:.74rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .badge-pill::before{content:'\2726'; font-size:.85em;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:18px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header .container{display:flex; align-items:center; justify-content:space-between;}
+  header.scrolled{
+    background:rgba(251,244,233,.96);
+    padding:10px 0;
+    box-shadow:0 6px 24px -10px rgba(46,42,38,.25);
+    backdrop-filter:blur(6px);
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .logo-mark{width:46px; height:46px; flex-shrink:0;}
+  .brand .wordmark{
+    font-family:var(--font-display);
+    font-size:1.02rem;
+    line-height:1.15;
+    color:var(--ivory);
+    transition:color .35s ease;
+  }
+  header.scrolled .brand .wordmark{color:var(--sage-deep);}
+  .brand .wordmark .small{display:block; font-family:var(--font-body); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; font-weight:500; color:var(--brass); margin-top:2px;}
+
+  nav.main-nav{display:flex; align-items:center; gap:34px;}
+  nav.main-nav a{
+    font-size:.85rem;
+    letter-spacing:.05em;
+    font-weight:500;
+    color:var(--ivory);
+    position:relative;
+    transition:color .35s ease;
+  }
+  header.scrolled nav.main-nav a{color:var(--charcoal);}
+  nav.main-nav a:not(.btn)::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:-6px;
+    height:1.5px; background:var(--terracotta);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.main-nav a:not(.btn):hover::after{transform:scaleX(1);}
+  header.scrolled .btn-outline{border-color:var(--sage-deep); color:var(--sage-deep);}
+  header.scrolled .btn-outline:hover{background:var(--sage-deep); color:var(--ivory);}
+
+  .hamburger{
+    display:none;
+    width:40px; height:40px;
+    border:none; background:none;
+    cursor:pointer;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+  }
+  .hamburger span{display:block; width:24px; height:2px; background:var(--ivory); transition:background .35s ease, transform .3s ease, opacity .3s ease;}
+  header.scrolled .hamburger span{background:var(--charcoal);}
+  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-panel{
+    position:fixed; top:0; right:0; bottom:0;
+    width:min(78vw, 320px);
+    background:var(--sage-deep);
+    transform:translateX(100%);
+    transition:transform .4s ease;
+    z-index:99;
+    padding:100px 32px 40px;
+    display:flex; flex-direction:column; gap:26px;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel a{color:var(--ivory); font-size:1.05rem; font-family:var(--font-display);}
+  .mobile-panel .btn{margin-top:10px;}
+
+  @media (max-width:880px){
+    nav.main-nav{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 120% at 18% 0%, #8a9778 0%, var(--sage) 42%, var(--sage-deep) 100%);
+    color:var(--ivory);
+    padding:168px 0 110px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; top:0; right:0;
+    width:0; height:0;
+    border-style:solid;
+    border-width:0 230px 230px 0;
+    border-color:transparent var(--terracotta) transparent transparent;
+    opacity:.9;
+  }
+  .hero::after{
+    content:'';
+    position:absolute; bottom:0; left:0;
+    width:0; height:0;
+    border-style:solid;
+    border-width:0 0 180px 180px;
+    border-color:transparent transparent var(--brass) transparent;
+    opacity:.85;
+  }
+  .hero-arc{
+    position:absolute; top:-120px; right:-120px;
+    width:420px; height:420px;
+    border:1.5px solid rgba(251,244,233,.25);
+    border-radius:50%;
+  }
+  .hero-inner{position:relative; z-index:2; max-width:760px; margin:0 auto; text-align:center;}
+  .hero .logo-mark{width:104px; height:104px; margin:0 auto 22px;}
+  .hero .eyebrow{color:var(--brass);}
+  .hero h1{
+    font-size:clamp(2.6rem, 1.8rem + 3.4vw, 4.6rem);
+    margin-top:14px;
+    letter-spacing:.005em;
+  }
+  .hero .subhead{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(1.05rem, .9rem + .6vw, 1.4rem);
+    color:#f1ead9;
+    margin-top:18px;
+  }
+  .hero .master-line{
+    margin-top:30px;
+    font-size:clamp(1.15rem, 1rem + .6vw, 1.45rem);
+    font-family:var(--font-display);
+    font-weight:600;
+    color:var(--ivory);
+  }
+  .hero .audience-line{
+    margin-top:14px;
+    font-size:1rem;
+    letter-spacing:.04em;
+    color:#e9e2d3;
+  }
+  .hero .audience-line strong{color:var(--ivory); font-weight:600;}
+  .hero-ctas{
+    margin-top:42px;
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  /* ===== REVEAL ===== */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== LEARN SECTION ===== */
+  /* This section used to be plain white/ivory. We now use the marble
+     texture image as its background. background-size:cover makes the
+     image fill the whole section, background-position:center keeps it
+     centered, and the ivory overlay (via ::before below) keeps the
+     text easy to read on top of the image. If you ever want to swap
+     the image, just replace the file "Marble Background.png" in the
+     project folder with a new image of the same name. */
+  .section-learn{
+    background-image:url("Marble Background.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    position:relative;
+  }
+  /* This semi-transparent ivory layer sits between the marble image
+     and the content, so paragraphs stay readable instead of fighting
+     with the busy background. Increase/decrease the opacity (the last
+     number in rgba) to make the background image more or less visible. */
+  .section-learn::before{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(251,244,233,.82);
+    z-index:0;
+  }
+  .section-learn .container{position:relative; z-index:1;}
+  .learn-card{
+    max-width:780px;
+    margin:0 auto;
+    background:var(--white);
+    border:1px solid #e9e1d1;
+    border-radius:14px;
+    padding:48px clamp(24px,5vw,56px);
+    box-shadow:0 30px 60px -40px rgba(46,42,38,.35);
+  }
+  .learn-card .intro{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.18rem;
+    color:var(--sage-deep);
+    text-align:center;
+    margin-bottom:30px;
+  }
+  .learn-list{display:flex; flex-direction:column; gap:18px;}
+  .learn-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    font-size:1.04rem;
+    color:var(--charcoal);
+  }
+  .learn-list .num{
+    flex-shrink:0;
+    width:30px; height:30px;
+    border-radius:50%;
+    border:1.5px solid var(--brass);
+    color:var(--terracotta);
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:.92rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ===== EXPERIENCES ===== */
+  .section-experiences{background:var(--sage-deep); color:var(--ivory);}
+  .exp-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+    margin-bottom:46px;
+  }
+  @media (max-width:880px){ .exp-grid{grid-template-columns:repeat(2,1fr);} }
+  .exp-card{
+    background:rgba(251,244,233,.06);
+    border:1px solid rgba(251,244,233,.22);
+    border-radius:10px;
+    padding:30px 18px;
+    text-align:center;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .exp-card:hover{background:rgba(251,244,233,.13); transform:translateY(-4px);}
+  .exp-card .mark{color:var(--terracotta); font-size:1.3rem; margin-bottom:10px;}
+  .exp-card span{
+    font-family:var(--font-display);
+    font-size:1.12rem;
+  }
+  .exp-detail-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px 30px;
+    text-align:center;
+    border-top:1px solid rgba(251,244,233,.2);
+    border-bottom:1px solid rgba(251,244,233,.2);
+    padding:26px 0;
+    font-size:1.02rem;
+  }
+  .exp-formats{
+    margin-top:26px;
+    text-align:center;
+    font-family:var(--font-display);
+    font-style:italic;
+    color:#f1ead9;
+    font-size:1.05rem;
+  }
+  .exp-badge-wrap{display:flex; justify-content:center; margin-top:28px;}
+
+  /* ===== WHO THIS IS FOR ===== */
+  .section-who{background:var(--cream-panel);}
+  .who-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+    max-width:880px;
+    margin:0 auto;
+  }
+  @media (max-width:720px){ .who-grid{grid-template-columns:1fr;} }
+  .who-open{
+    max-width:680px;
+    margin:0 auto 40px;
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    font-style:italic;
+    color:var(--sage-deep);
+  }
+  /* Every card in the "Who This Is For" section now uses the marble
+     texture as its background (not just one card) — that's what the
+     background-image line below does. background-size:cover fills
+     the whole card with the image, background-position:center keeps
+     it centered. Because each card is a different size (the text
+     wraps differently), each one shows a different crop of the same
+     image — that's expected and gives some nice visual variety.
+     The white text + text-shadow keeps the sentence readable on top
+     of the busy marble pattern. If you want to swap the image later,
+     just replace the file "Marble Background.png" with a new image
+     of the same name — all four cards update automatically. */
+  .who-card{
+    background-image:url("Marble Background.png");
+    background-size:cover;
+    background-position:center;
+    border-left:3px solid var(--terracotta);
+    border-radius:6px;
+    padding:24px 26px;
+    font-size:1.02rem;
+    color:#fff;
+    text-shadow:0 1px 4px rgba(0,0,0,.55);
+    font-weight:600;
+  }
+
+  /* ===== LEGITPRO SECTION ===== */
+  .section-legitpro{
+    background:var(--charcoal);
+    color:var(--ivory);
+    position:relative;
+    overflow:hidden;
+  }
+  .section-legitpro::before{
+    content:'';
+    position:absolute; top:0; left:0; right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--brass) 0%, var(--terracotta) 60%, var(--brass) 100%);
+  }
+  .lp-eyebrow{
+    font-family:var(--font-body);
+    font-size:.72rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--brass);
+  }
+  .lp-wordmark{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem, 1.8rem + 2vw, 3.8rem);
+    font-weight:700;
+    margin-top:.3rem;
+    color:var(--ivory);
+    line-height:1.1;
+  }
+  .lp-wordmark span{color:var(--brass);}
+  .lp-tagline{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(1rem, .9rem + .5vw, 1.3rem);
+    color:#cfc8ba;
+    margin-top:.8rem;
+    max-width:620px;
+  }
+  .lp-divider{
+    display:flex; align-items:center; gap:10px;
+    margin:28px 0;
+  }
+  .lp-divider span.l{flex:1; height:1px; background:rgba(201,154,68,.45);}
+  .lp-divider span.d{width:7px; height:7px; background:var(--terracotta); transform:rotate(45deg); flex-shrink:0;}
+  .lp-mission{
+    max-width:820px;
+    font-size:1.06rem;
+    line-height:1.75;
+    color:#e4ddd2;
+  }
+  .lp-mission strong{color:var(--ivory);}
+  .lp-tracks-head{
+    margin-top:56px;
+    text-align:center;
+  }
+  .lp-tracks-head h3{
+    font-family:var(--font-display);
+    font-size:clamp(1.5rem, 1.3rem + .8vw, 2rem);
+    font-weight:600;
+    color:var(--ivory);
+    margin:.5rem 0 0;
+  }
+  .lp-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    margin-top:32px;
+  }
+  @media (max-width:900px){ .lp-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:580px){ .lp-grid{grid-template-columns:1fr;} }
+  .lp-card{
+    background:rgba(251,244,233,.06);
+    border:1px solid rgba(201,154,68,.25);
+    border-top:2px solid var(--brass);
+    border-radius:8px;
+    padding:26px 22px 22px;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .lp-card:hover{background:rgba(251,244,233,.1); transform:translateY(-4px);}
+  .lp-card .num{
+    font-family:var(--font-body);
+    font-size:.68rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .lp-card h4{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--ivory);
+    margin:0 0 8px;
+  }
+  .lp-card p{
+    font-size:.88rem;
+    color:#cfc8ba;
+    line-height:1.6;
+    margin:0;
+  }
+  .lp-card .badge{
+    display:inline-block;
+    margin-top:12px;
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border:1px solid rgba(189,98,64,.5);
+    color:var(--terracotta);
+    border-radius:999px;
+    font-weight:600;
+  }
+  .lp-pricing{
+    margin-top:52px;
+    background:rgba(251,244,233,.04);
+    border:1px solid rgba(201,154,68,.2);
+    border-radius:12px;
+    padding:38px clamp(22px,4vw,48px);
+  }
+  .lp-pricing h3{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--ivory);
+    margin:0 0 6px;
+  }
+  .lp-pricing .lp-pricing-sub{
+    color:#cfc8ba;
+    font-size:.95rem;
+    margin:0 0 28px;
+  }
+  .lp-pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  @media (max-width:720px){ .lp-pricing-grid{grid-template-columns:1fr;} }
+  .lp-tier{
+    background:rgba(251,244,233,.07);
+    border-radius:8px;
+    padding:22px;
+    border:1px solid rgba(251,244,233,.15);
+  }
+  .lp-tier-label{
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .lp-tier-price{
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--ivory);
+    margin-bottom:6px;
+  }
+  .lp-tier-desc{
+    font-size:.84rem;
+    color:#cfc8ba;
+    line-height:1.55;
+  }
+  .lp-contact-row{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    border-top:1px solid rgba(201,154,68,.25);
+    padding-top:36px;
+  }
+  .lp-contact-info{}
+  .lp-contact-info p{
+    margin:0;
+    color:#cfc8ba;
+    font-size:.9rem;
+  }
+  .lp-contact-info p strong{color:var(--ivory);}
+  .lp-contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .lp-link{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:.9rem;
+    letter-spacing:.02em;
+    color:var(--ivory);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-color:var(--brass);
+    transition:color .25s ease;
+  }
+  .lp-link:hover{color:var(--brass);}
+  .lp-sub-badge{
+    margin-top:8px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#a09888;
+    font-weight:500;
+  }
+  .lp-sub-badge::before{content:'—'; color:var(--brass);}
+
+  /* ===== FACILITATOR ===== */
+  .section-facilitator{
+    background:var(--ivory);
+    text-align:center;
+    padding:90px 0;
+  }
+  .section-facilitator .logo-mark{width:92px; height:92px; margin:0 auto 26px;}
+  .facilitator-quote{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(1.3rem, 1.1rem + .8vw, 1.7rem);
+    color:var(--sage-deep);
+    max-width:620px;
+    margin:0 auto 26px;
+  }
+  .facilitator-name{font-size:1.2rem; font-weight:600; font-family:var(--font-display);}
+  .facilitator-title{color:var(--terracotta); margin-top:4px; font-size:.95rem; letter-spacing:.03em;}
+
+  /* ===== CONTACT ===== */
+  .section-contact{
+    background:var(--terracotta);
+    color:var(--ivory);
+  }
+  .section-contact .eyebrow{color:var(--ivory); opacity:.85;}
+  .section-contact .section-head h2{color:var(--ivory);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    max-width:680px;
+    margin:0 auto 38px;
+  }
+  @media (max-width:640px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:rgba(251,244,233,.1);
+    border:1px solid rgba(251,244,233,.35);
+    border-radius:10px;
+    padding:28px 20px;
+    text-align:center;
+  }
+  .contact-label{display:block; font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; opacity:.8; margin-bottom:10px;}
+  .phone-cta, .email-cta{
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    font-weight:600;
+    word-break:break-word;
+  }
+  .email-cta{font-size:1.08rem;}
+  .contact-notes{text-align:center; max-width:520px; margin:0 auto; opacity:.95;}
+  .contact-notes p{margin:4px 0; font-size:.96rem;}
+  .contact-cta-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:30px;}
+
+  /* ===== FOOTER ===== */
+  .site-footer{background:var(--charcoal); color:#cfc8ba; padding:50px 0 30px; text-align:center;}
+  .footer-brand{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px;}
+  .footer-brand .logo-mark{width:34px; height:34px;}
+  .footer-brand span{font-family:var(--font-display); font-size:1rem; color:var(--ivory);}
+  .footer-tagline{font-family:var(--font-display); font-style:italic; color:var(--brass); font-size:1.1rem; margin-bottom:14px;}
+  .footer-fine{font-size:.78rem; line-height:1.7; opacity:.7; max-width:520px; margin:0 auto;}
+
+  @media (max-width:600px){
+    .exp-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .hero{padding:148px 0 90px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <a class="brand" href="#top" aria-label="Girls Who Wear Glasses, Inc. home">
+      <img class="logo-mark" src="Girls Who Wear Glasses Logo.png" alt="Girls Who Wear Glasses logo">
+      <span class="wordmark">Girls Who Wear Glasses<span class="small">Incorporated</span></span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#learn">What You'll Learn</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#who">Who It's For</a>
+      <a href="#legitpro">Legi'tPro™</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-outline" href="tel:+16468206777">(646) 820-6777</a>
+    </nav>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#learn">What You'll Learn</a>
+  <a href="#experiences">Experiences</a>
+  <a href="#who">Who It's For</a>
+  <a href="#legitpro">Legi'tPro™</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" href="tel:+16468206777">Call (646) 820-6777</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-arc" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <img class="logo-mark" src="Girls Who Wear Glasses Logo.png" alt="Girls Who Wear Glasses logo">
+      <span class="eyebrow">Girls Who Wear Glasses, Inc.</span>
+      <h1>Polish. Poise. Purpose.</h1>
+      <p class="subhead">An Etiquette &amp; Social Graces Workshop Experience</p>
+      <p class="master-line">Learn How to Master the Moments That Matter!</p>
+      <p class="audience-line"><strong>Co-ed services</strong> open to youth (9+) and adults</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Book the Experience</a>
+        <a class="btn btn-outline" href="tel:+16468206777">Call (646) 820-6777</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section section-learn" id="learn">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What You'll Learn</span>
+        <h2>A Curriculum for Every Room</h2>
+      </div>
+      <div class="learn-card reveal">
+        <p class="intro">Unlock the sophistication of polished manners and social grace to navigate every room, every table, and every conversation:</p>
+        <ul class="learn-list">
+          <li><span class="num">1</span><span>Handshakes, greetings, and introductions.</span></li>
+          <li><span class="num">2</span><span>Decoding &ldquo;Dress to Impress&rdquo; for every occasion.</span></li>
+          <li><span class="num">3</span><span>The secrets to engaging, graceful conversation.</span></li>
+          <li><span class="num">4</span><span>Managing your digital life without being rude.</span></li>
+          <li><span class="num">5</span><span>A masterclass in dining etiquette, from appetizers to dessert.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES OFFERED -->
+  <section class="section section-experiences" id="experiences">
+    <div class="container">
+      <div class="section-head on-dark reveal">
+        <span class="eyebrow">Experiences Offered</span>
+        <h2>Built Around Your Gathering</h2>
+      </div>
+
+      <div class="exp-grid reveal">
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Mother/Daughter</span></div>
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Father/Son</span></div>
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Private Sessions</span></div>
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Restaurant Dining</span></div>
+      </div>
+
+      <div class="exp-detail-row reveal">
+        <span>Customized group sessions for 30 to 100 participants.</span>
+        <span>Virtual sessions available</span>
+      </div>
+
+      <p class="exp-formats reveal">Single-Unit Intensive &nbsp;&bull;&nbsp; Two-Part Extended &nbsp;&bull;&nbsp; Custom for Your Group</p>
+
+      <div class="exp-badge-wrap reveal">
+        <span class="badge-pill">Exclusive, Personalized Service</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="section section-who" id="who">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who This Is For</span>
+        <h2>Built for Every Stage of Life</h2>
+      </div>
+      <p class="who-open reveal">Anyone ready to walk into any room &mdash; and any relationship &mdash; with quiet confidence.</p>
+      <div class="who-grid reveal">
+        <div class="who-card">Students preparing for interviews and first impressions.</div>
+        <div class="who-card">Young professionals polishing the presence that opens doors.</div>
+        <div class="who-card">Families wanting a shared experience that lasts well beyond the workshop.</div>
+        <div class="who-card">Organizations, schools, and ministries investing in the people they lead.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGI'TPRO -->
+  <section class="section section-legitpro" id="legitpro">
+    <div class="container">
+
+      <!-- HEADER -->
+      <div class="reveal">
+        <span class="lp-eyebrow">A Girls Who Wear Glasses, Inc. Initiative</span>
+        <h2 class="lp-wordmark">Legi'<span>t</span>Pro<sup style="font-size:.45em; vertical-align:super; font-style:normal;">™</sup></h2>
+        <p class="lp-tagline">"How We Serve" &mdash; Advancing the Standard of Legislative Excellence</p>
+      </div>
+
+      <div class="lp-divider reveal"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+
+      <!-- MISSION -->
+      <p class="lp-mission reveal">
+        <strong>Legi'tPro™</strong> is a premier professional development, training, and consulting initiative dedicated to New York City and State legislative district offices. We fully prepare staff to serve with clarity, competence, and compassion &mdash; ensuring that every constituent interaction reflects the values of effective government. Our signature philosophy, <em>"How We Serve,"</em> expresses our commitment to principled service, public trust, and performance excellence.
+      </p>
+      <p class="lp-sub-badge reveal">Excellence in public service begins with excellence in staff development.</p>
+
+      <!-- SERVICE TRACKS (teaser only) -->
+      <div class="lp-tracks-head reveal">
+        <span class="lp-eyebrow">Training &amp; Development Tracks</span>
+        <h3>Built for Every Level of Public Service</h3>
+      </div>
+
+      <!--
+        UPDATED (beginner note):
+        The full list of 7 tracks and the "Training Investment" pricing
+        table used to live directly on this public page. They now live
+        on a separate, password-protected page: legitpro.html.
+
+        Why: Lynette wanted pricing to stay private and only be shown
+        after someone books a consultation, instead of being visible
+        to any visitor on the main site.
+
+        If you ever want to add pricing back here, look at legitpro.html
+        for the original markup/CSS classes (lp-grid, lp-card, lp-pricing,
+        lp-pricing-grid, lp-tier) — they're unchanged, just moved.
+      -->
+      <p class="lp-mission reveal" style="max-width:640px; margin:0 auto 10px;">
+        Seven training tracks take staff from onboarding through senior
+        leadership &mdash; constituent casework, communication, data
+        &amp; reporting, and policy alignment, plus ongoing continuing
+        education. Full curriculum details and current pricing are
+        shared after a short consultation call.
+      </p>
+
+      <div class="hero-ctas reveal" style="justify-content:center; margin:26px 0 8px;">
+        <!-- This button sends visitors to the consultation request form
+             (consultation.html). That form lets them pick which
+             service they're interested in (Legi'tPro or another GWWG
+             service) and their age range, then emails the details to
+             Lynette. See consultation.html for how that works. -->
+        <a class="btn btn-primary" href="consultation.html">Schedule a Consultation for Pricing</a>
+      </div>
+
+      <!-- INVESTMENT (teaser row only — full pricing moved to legitpro.html) -->
+      <div class="lp-pricing reveal">
+        <h3>Training Investment</h3>
+        <p class="lp-pricing-sub">
+          Flexible pricing for individual participants, office cohorts, and
+          city/state contracts &mdash; custom proposals available.
+          <a href="legitpro.html" style="color:var(--brass); text-decoration:underline;">Existing clients: view full pricing here</a>.
+        </p>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="lp-contact-row reveal">
+        <div class="lp-contact-info">
+          <p><strong>Lynette Shelborne-Barfield</strong></p>
+          <p>Founder &amp; Principal Consultant, Legi'tPro™</p>
+          <p style="margin-top:4px; color:#a09888; font-size:.82rem;">Director of Strategic Partnerships, New York City Council<br>Former Director of Special Projects, New York State Senate</p>
+        </div>
+        <div class="lp-contact-links">
+          <a class="lp-link" href="tel:+13475600517">(347) 560-0517</a>
+          <a class="lp-link" href="mailto:LShelborneBarfield@gmail.com">LShelborneBarfield@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FACILITATOR -->
+  <section class="section-facilitator reveal">
+    <img class="logo-mark" src="Girls Who Wear Glasses Logo.png" alt="Girls Who Wear Glasses logo">
+    <p class="facilitator-quote">&ldquo;Go from uncertain to unforgettable in one experience.&rdquo;</p>
+    <p class="facilitator-name">Facilitated by Lynette Shelborne-Barfield</p>
+    <p class="facilitator-title">Founder &amp; Chief Engagement Officer, Girls Who Wear Glasses, Inc.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Let's Talk</span>
+        <h2 style="margin-top:.5rem;">Ready to Book the Experience?</h2>
+        <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <span class="contact-label">Call or Text</span>
+          <a class="phone-cta" href="tel:+16468206777">(646) 820-6777</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-label">Email</span>
+          <a class="email-cta" href="mailto:Lsb@girlswhowearglasses.org">Lsb@girlswhowearglasses.org</a>
+        </div>
+      </div>
+
+      <div class="contact-notes reveal">
+        <p>Reach out via Girls Who Wear Glasses, Inc.</p>
+        <p>Proposal &amp; fees available for serious inquiries.</p>
+      </div>
+
+      <div class="contact-cta-row reveal">
+        <a class="btn btn-outline" href="tel:+16468206777">Call Now</a>
+        <a class="btn btn-primary" href="mailto:Lsb@girlswhowearglasses.org">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">
+    <img class="logo-mark" src="Girls Who Wear Glasses Logo.png" alt="Girls Who Wear Glasses logo">
+    <span>Girls Who Wear Glasses, Inc.</span>
+  </div>
+  <p class="footer-tagline">Polish. Poise. Purpose.</p>
+  <p class="footer-fine">&copy; 2026 Girls Who Wear Glasses, Inc. All rights reserved.<br>No content of this site may be reproduced without permission.</p>
+</footer>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobilePanel.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobilePanel.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

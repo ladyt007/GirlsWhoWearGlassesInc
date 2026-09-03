@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule a Consultation | Girls Who Wear Glasses, Inc.</title>
+<!--
+  ============================================================
+  BEGINNER NOTES — read this before editing this file
+  ============================================================
+  This is a simple "consultation request" form. It asks the
+  visitor:
+    - which service they're interested in (a dropdown)
+    - the age range it's for (a dropdown: 9+ or Adults)
+    - their name / email / phone / a short note
+
+  HOW IT SENDS THE INFO (important!):
+  This is a static website — there is no server or database
+  behind it, so this form can't "submit" to a database the way
+  forms on bigger sites do. Instead, when the visitor clicks
+  "Send Request", the JavaScript at the bottom of this file
+  builds a pre-filled email (using their answers) and opens it
+  in whatever email app is set up on their device (Mail, Gmail,
+  Outlook, etc.) addressed to Lynette. The visitor then just
+  hits "send" in their own email app.
+
+  This means:
+  - No visitor data is stored anywhere on this website.
+  - The visitor's own email app must be configured, or nothing
+    will open. (This is a known limitation of simple static
+    sites — a "real" form that saves submissions would need a
+    form service like Formspree/Netlify Forms, or a backend.)
+
+  TO CHANGE WHERE REQUESTS ARE SENT:
+  Search this file for CONSULTATION_EMAIL and change the address.
+
+  TO ADD/REMOVE A SERVICE FROM THE DROPDOWN:
+  Look for the <select id="service"> block below and add or
+  remove an <option> line.
+  ============================================================
+-->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%23FBF4E9'/%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --ivory:#FBF4E9;
+    --cream-panel:#F3EBDC;
+    --sage:#7C8A6B;
+    --sage-deep:#566048;
+    --terracotta:#BD6240;
+    --terracotta-deep:#9B4E32;
+    --brass:#C99A44;
+    --charcoal:#2E2A26;
+    --white:#ffffff;
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--charcoal);
+    background:var(--charcoal);
+    line-height:1.6;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+  }
+
+  .form-card{
+    background:var(--ivory);
+    border-radius:12px;
+    max-width:560px;
+    width:100%;
+    padding:clamp(28px,5vw,48px);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .form-card .eyebrow{color:var(--terracotta); text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; font-weight:600;}
+  .form-card h1{font-family:var(--font-display); color:var(--sage-deep); font-size:1.7rem; margin:.4rem 0 6px;}
+  .form-card .lead{color:#5b564d; font-size:.95rem; margin:0 0 26px;}
+
+  label{display:block; font-weight:600; font-size:.9rem; margin:0 0 6px;}
+  .field{margin-bottom:18px;}
+  input, select, textarea{
+    width:100%;
+    padding:11px 12px;
+    border-radius:6px;
+    border:1px solid #d8cfba;
+    font-family:var(--font-body);
+    font-size:.95rem;
+    background:var(--white);
+  }
+  textarea{resize:vertical; min-height:90px;}
+
+  button[type="submit"]{
+    width:100%;
+    padding:13px 14px;
+    border-radius:6px;
+    border:none;
+    background:var(--terracotta);
+    color:var(--ivory);
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:1rem;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  button[type="submit"]:hover{background:var(--terracotta-deep);}
+
+  .back-link{display:inline-block; margin-top:18px; color:var(--sage-deep); font-size:.85rem;}
+  .note{font-size:.78rem; color:#7a7468; margin-top:14px;}
+</style>
+</head>
+<body>
+
+  <div class="form-card">
+    <span class="eyebrow">Girls Who Wear Glasses, Inc.</span>
+    <h1>Schedule a Consultation</h1>
+    <p class="lead">Tell us a bit about what you're looking for and we'll follow up to
+       schedule a call and share pricing.</p>
+
+    <!--
+      This <form> does not "submit" to a server. The button below is
+      type="button" (not type="submit") on purpose, and a small
+      script (bottom of the page) reads the values and opens an
+      email draft instead. See the notes at the top of this file.
+    -->
+    <form id="consult-form">
+
+      <div class="field">
+        <label for="service">Which service are you interested in?</label>
+        <select id="service" required>
+          <option value="" disabled selected>Select a service&hellip;</option>
+          <option value="Legi'tPro (legislative staff training)">Legi'tPro™ — Legislative Staff Training</option>
+          <option value="Etiquette & Social Graces Workshop">Etiquette &amp; Social Graces Workshop</option>
+          <option value="Private Event">Private Event</option>
+          <option value="School / Community Group Session">School or Community Group Session</option>
+          <option value="Personalized Session">Personalized 1:1 Session</option>
+          <option value="Something else / not sure yet">Something else / not sure yet</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="age-range">Age range this is for</label>
+        <select id="age-range" required>
+          <option value="" disabled selected>Select an age range&hellip;</option>
+          <option value="Youth (9+)">Youth (9+)</option>
+          <option value="Adults">Adults</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="full-name">Your name</label>
+        <input type="text" id="full-name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number (optional)</label>
+        <input type="tel" id="phone">
+      </div>
+
+      <div class="field">
+        <label for="notes">Anything else we should know? (optional)</label>
+        <textarea id="notes" placeholder="Group size, preferred dates, location, etc."></textarea>
+      </div>
+
+      <button type="button" id="send-request">Send Request</button>
+    </form>
+
+    <a class="back-link" href="index.html">&larr; Back to the main site</a>
+    <p class="note">Clicking "Send Request" opens a pre-filled email in your email
+       app so you can review and send it &mdash; nothing is submitted automatically.</p>
+  </div>
+
+  <script>
+    // ============================================================
+    // BEGINNER-FRIENDLY EXPLANATION OF THIS SCRIPT
+    // ============================================================
+    // Where the consultation request email should go. Change this
+    // address if requests should go somewhere else.
+    const CONSULTATION_EMAIL = "LShelborneBarfield@gmail.com";
+
+    document.getElementById('send-request').addEventListener('click', function () {
+      // 1. Read every field's current value.
+      const service = document.getElementById('service').value;
+      const ageRange = document.getElementById('age-range').value;
+      const fullName = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const notes = document.getElementById('notes').value;
+
+      // 2. Very basic check that the required fields are filled in.
+      //    (The "required" attribute on the inputs above already helps
+      //    with this in most browsers, but this is a backup check.)
+      if (!service || !ageRange || !fullName || !email) {
+        alert('Please fill in the service, age range, name, and email before sending.');
+        return;
+      }
+
+      // 3. Build the subject line and the body text of the email.
+      const subject = 'Consultation Request: ' + service;
+      const body =
+        'Service requested: ' + service + '\n' +
+        'Age range: ' + ageRange + '\n' +
+        'Name: ' + fullName + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + (phone || 'Not provided') + '\n\n' +
+        'Notes:\n' + (notes || 'None provided');
+
+      // 4. "mailto:" links open the visitor's own email app with the
+      //    address, subject, and body already filled in.
+      //    encodeURIComponent() makes sure spaces/punctuation/line
+      //    breaks are formatted correctly inside the link.
+      const mailtoLink =
+        'mailto:' + CONSULTATION_EMAIL +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailtoLink;
+    });
+  </script>
+
+</body>
+</html>
