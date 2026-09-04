@@ -175,6 +175,7 @@
     <div class="error-message" id="error-message">
       Something went wrong sending your request. Please try again, or reach
       out directly at (646) 820-6777 / Lsb@girlswhowearglasses.org.
+      <div id="error-detail" style="margin-top:6px; font-size:.75rem; opacity:.8;"></div>
     </div>
 
     <form id="consult-form">
@@ -201,7 +202,7 @@
           <option value="" disabled selected>Select what you're interested in&hellip;</option>
           <option value="Legi'tPro (legislative staff training)">Legi'tPro™ — Legislative Staff Training</option>
           <option value="Etiquette & Social Graces Workshop">Etiquette &amp; Social Graces Workshop</option>
-          <option value="12-Week Etiquette & Grace Course">12-Week Etiquette &amp; Grace Course</option>
+          <option value="6 Track Curriculum">6 Track Curriculum</option>
           <option value="Private Event">Private Event</option>
           <option value="School & Community Group Session">School &amp; Community Group Session</option>
           <option value="Personalized Session">Personalized Session</option>
@@ -266,10 +267,30 @@
       <div class="checkmark">&#10003;</div>
       <h2>Request Sent!</h2>
       <p>Thanks for reaching out — we'll get back to you within 24&ndash;48 hours.</p>
+      <p class="note" id="return-note" style="margin-top:14px;"></p>
     </div>
 
-    <a class="back-link" href="index.html">&larr; Back to the main site</a>
+    <a class="back-link" id="back-link" href="index.html">&larr; Back</a>
   </div>
+
+  <script>
+    // ============================================================
+    // "RETURN TO WHERE THEY CAME FROM" — beginner explanation
+    // ============================================================
+    // document.referrer is the page the visitor clicked a link from
+    // to get here (e.g. the Etiquette & Graces page, the 6 Track
+    // Course page, or Legi'tPro). We only trust it if it's a page on
+    // THIS same site (checking window.location.host) — otherwise we
+    // fall back to the homepage. This value is used two places below:
+    // the "Back" link at the bottom of the form, and the automatic
+    // redirect after a successful submission.
+    const cameFromPage =
+      (document.referrer && document.referrer.indexOf(window.location.host) !== -1)
+        ? document.referrer
+        : 'index.html';
+
+    document.getElementById('back-link').href = cameFromPage;
+  </script>
 
   <script>
     // ============================================================
@@ -279,12 +300,19 @@
     // Web3Forms which inbox to deliver submissions to. See the
     // setup instructions in the big comment at the top of this file
     // for how to get your own key and paste it in here.
+    //
+    // IMPORTANT: if this still says "PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE"
+    // (the placeholder), every submission will fail with an error —
+    // that's the single most common reason this form "doesn't work."
+    // See the setup steps at the very top of this file to fix it.
     const WEB3FORMS_ACCESS_KEY = "PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE";
 
     const form = document.getElementById('consult-form');
     const submitButton = document.getElementById('send-request');
     const successMessage = document.getElementById('success-message');
     const errorMessage = document.getElementById('error-message');
+    const errorDetail = document.getElementById('error-detail');
+    const returnNote = document.getElementById('return-note');
 
     form.addEventListener('submit', async function (e) {
       // Stop the browser's normal page-reload form submission — we're
@@ -353,13 +381,23 @@
           // Hide the form, show the thank-you message.
           form.style.display = 'none';
           successMessage.style.display = 'block';
+
+          // Tell the visitor they'll be sent back automatically, then
+          // do it after a short pause so they have time to read the
+          // thank-you message first.
+          returnNote.textContent = 'Returning you to where you came from…';
+          setTimeout(function () {
+            window.location.href = cameFromPage;
+          }, 3000);
         } else {
           throw new Error(result.message || 'Submission failed');
         }
       } catch (err) {
         // Something went wrong (bad access key, no internet, etc.) —
         // show the error banner and re-enable the button so they can
-        // try again.
+        // try again. The exact message (when available) is shown in
+        // small text to help with troubleshooting.
+        errorDetail.textContent = err && err.message ? 'Details: ' + err.message : '';
         errorMessage.style.display = 'block';
         submitButton.disabled = false;
         submitButton.textContent = 'Send Request';
