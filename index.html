@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Girls Who Wear Glasses, Inc. | Polish. Poise. Purpose.</title>
-<meta name="description" content="An etiquette &amp; social graces workshop experience for youth (9+) and adults. Co-ed services facilitated by Lynette Shelborne-Barfield.">
+<meta name="description" content="An etiquette &amp; social graces workshop experience for youth (9+) &amp; Adults. Co-ed services facilitated by Lynette Shelborne-Barfield.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%23FBF4E9'/%3E%3Cpath d='M58,84 C54,56 76,30 106,30 C128,30 142,42 146,58 C150,50 156,56 154,66 C160,58 158,46 148,38 C158,52 162,72 154,90 C150,100 142,106 134,100 C138,84 132,68 116,62 C100,58 84,62 74,74 C68,80 62,84 58,84 Z' fill='%232E2A26'/%3E%3Crect x='64' y='90' width='32' height='24' rx='11' fill='none' stroke='%232E2A26' stroke-width='6'/%3E%3Crect x='104' y='90' width='32' height='24' rx='11' fill='none' stroke='%232E2A26' stroke-width='6'/%3E%3Cline x1='96' y1='100' x2='104' y2='100' stroke='%232E2A26' stroke-width='6'/%3E%3C/svg%3E">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap');
@@ -149,7 +149,17 @@
     backdrop-filter:blur(6px);
   }
   .brand{display:flex; align-items:center; gap:12px;}
-  .brand .logo-mark{width:46px; height:46px; flex-shrink:0;}
+  /* Logo made noticeably bigger and bolder in the top nav specifically
+     (that's the "top corner" placement) — up from the original 46px
+     to 80px, plus a stronger drop-shadow so it reads with real
+     presence against the header background. To resize it later, just
+     change the two "80px" values below (keep width and height equal
+     so the circle logo doesn't stretch) — see the step-by-step notes
+     further down this file for exactly how to do that. */
+  .brand .logo-mark{
+    width:80px; height:80px; flex-shrink:0;
+    filter:drop-shadow(0 3px 8px rgba(0,0,0,.3));
+  }
   .brand .wordmark{
     font-family:var(--font-display);
     font-size:1.02rem;
@@ -444,6 +454,84 @@
     font-weight:600;
   }
 
+  /* ===== 12-WEEK ETIQUETTE & GRACE COURSE ===== */
+  /* This section sits on the light cream background (unlike the dark
+     Legi'tPro section below it), because it's part of the Etiquette &
+     Graces offering, not the separate Legi'tPro brand. */
+  .section-course{background:var(--cream-panel);}
+  .course-eyebrow{
+    font-family:var(--font-body);
+    font-size:.72rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--terracotta);
+  }
+  .course-intro{
+    max-width:760px;
+    margin:14px auto 0;
+    font-size:1.02rem;
+    line-height:1.75;
+    color:#4a463e;
+    text-align:center;
+  }
+  .course-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    margin-top:40px;
+  }
+  @media (max-width:900px){ .course-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:580px){ .course-grid{grid-template-columns:1fr;} }
+  .course-card{
+    background-image:url("Marble Background.png");
+    background-size:cover;
+    background-position:center;
+    border:1px solid #e9e1d1;
+    border-top:2px solid var(--sage);
+    border-radius:8px;
+    padding:24px 20px 20px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .3s ease;
+  }
+  .course-card:hover{transform:translateY(-4px);}
+  /* Same technique as the "What You'll Learn" card: a semi-transparent
+     white layer sits between the marble image and the text so each
+     week's title/description stays readable instead of fighting the
+     busy marble pattern. Lower the last number in rgba toward .5 for
+     more marble showing through, or raise it toward .9 for easier
+     reading. */
+  .course-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(255,255,255,.55);
+    z-index:0;
+  }
+  .course-card > *{position:relative; z-index:1;}
+  .course-card .num{
+    font-family:var(--font-body);
+    font-size:.68rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .course-card h4{
+    font-family:var(--font-display);
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--sage-deep);
+    margin:0 0 8px;
+  }
+  .course-card p{
+    font-size:.88rem;
+    color:#4a463e;
+    line-height:1.6;
+    margin:0;
+  }
+
   /* ===== LEGITPRO SECTION ===== */
   .section-legitpro{
     background:var(--charcoal);
@@ -733,10 +821,11 @@
 
     <nav class="main-nav">
       <a href="#learn">What You'll Learn</a>
-      <a href="#experiences">Experiences</a>
+      <a href="#experiences">Etiquette &amp; Graces</a>
       <a href="#who">Who It's For</a>
+      <a href="#course">12-Week Course</a>
       <a href="#legitpro">Legi'tPro™</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">For More Information</a>
       <a class="btn btn-outline" href="tel:+16468206777">(646) 820-6777</a>
     </nav>
 
@@ -748,10 +837,11 @@
 
 <div class="mobile-panel" id="mobilePanel">
   <a href="#learn">What You'll Learn</a>
-  <a href="#experiences">Experiences</a>
+  <a href="#experiences">Etiquette &amp; Graces</a>
   <a href="#who">Who It's For</a>
+  <a href="#course">12-Week Course</a>
   <a href="#legitpro">Legi'tPro™</a>
-  <a href="#contact">Contact</a>
+  <a href="#contact">For More Information</a>
   <a class="btn btn-primary" href="tel:+16468206777">Call (646) 820-6777</a>
 </div>
 
@@ -766,9 +856,9 @@
       <h1>Polish. Poise. Purpose.</h1>
       <p class="subhead">An Etiquette &amp; Social Graces Workshop Experience</p>
       <p class="master-line">Learn How to Master the Moments That Matter!</p>
-      <p class="audience-line"><strong>Co-ed services</strong> open to youth (9+) and adults</p>
+      <p class="audience-line"><strong>Co-ed services</strong> open to youth (9+) &amp; Adults</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#contact">Book the Experience</a>
+        <a class="btn btn-primary" href="consultation.html">Consultation. Proposals. Fees.</a>
         <a class="btn btn-outline" href="tel:+16468206777">Call (646) 820-6777</a>
       </div>
     </div>
@@ -778,7 +868,6 @@
   <section class="section section-learn" id="learn">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">What You'll Learn</span>
         <h2>A Curriculum for Every Room</h2>
       </div>
       <div class="learn-card reveal">
@@ -798,14 +887,19 @@
   <section class="section section-experiences" id="experiences">
     <div class="container">
       <div class="section-head on-dark reveal">
-        <span class="eyebrow">Experiences Offered</span>
+        <span class="eyebrow">Etiquette &amp; Graces</span>
         <h2>Built Around Your Gathering</h2>
       </div>
 
       <div class="exp-grid reveal">
-        <div class="exp-card"><div class="mark">&#10022;</div><span>Mother/Daughter</span></div>
-        <div class="exp-card"><div class="mark">&#10022;</div><span>Father/Son</span></div>
-        <div class="exp-card"><div class="mark">&#10022;</div><span>Private Sessions</span></div>
+        <!-- Each of these 4 boxes is one line: an exp-card div with a
+             small diamond mark and a span holding the label. To
+             change a label, just edit the text between the opening
+             and closing span tags on that line. To add or remove a
+             card, copy or delete one whole line. -->
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Private Events</span></div>
+        <div class="exp-card"><div class="mark">&#10022;</div><span>School &amp; Community Groups</span></div>
+        <div class="exp-card"><div class="mark">&#10022;</div><span>Personalized Sessions</span></div>
         <div class="exp-card"><div class="mark">&#10022;</div><span>Restaurant Dining</span></div>
       </div>
 
@@ -839,6 +933,95 @@
     </div>
   </section>
 
+  <!-- 12-WEEK ETIQUETTE & GRACE COURSE -->
+  <!-- BEGINNER NOTE: this section is built the same way as the
+       Legi'tPro track grid below it — a heading, an intro paragraph,
+       then a grid of "course-card" boxes (one per week). To edit a
+       week's title or description, find its "Week" number in the
+       text and change the wording inside the h4 or p tags. To add or
+       remove a week, copy or delete one whole "course-card" block
+       (from its opening div down to its matching closing div). -->
+  <section class="section section-course" id="course">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="course-eyebrow">Deepen The Experience</span>
+        <h2>The 12-Week Etiquette &amp; Grace Course</h2>
+      </div>
+      <p class="course-intro reveal">
+        A guided, week-by-week journey through the full Polish. Poise. Purpose.
+        curriculum &mdash; from first impressions to formal dining &mdash; for
+        students, young professionals, and adults ready to build lasting confidence.
+      </p>
+
+      <div class="course-grid reveal">
+        <div class="course-card">
+          <div class="num">Week 1</div>
+          <h4>Foundations of Etiquette</h4>
+          <p>What etiquette really is, the difference between rigid rules and genuine relationship-building, and why heartfelt manners never go out of style.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 2</div>
+          <h4>First Impressions &amp; Meet-and-Greet Standards</h4>
+          <p>Posture, presence, and how to make anyone feel instantly welcomed the moment you enter a room.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 3</div>
+          <h4>The Art of the Handshake</h4>
+          <p>Timing, pressure, and eye contact &mdash; the mechanics of a handshake that signals confidence without overpowering.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 4</div>
+          <h4>The Choreography of Introductions</h4>
+          <p>How to introduce people gracefully, in what order, and with the right context in professional and social settings.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 5</div>
+          <h4>Navigating Names Gracefully</h4>
+          <p>Recovering smoothly when you forget a name, and helping others do the same with warmth instead of awkwardness.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 6</div>
+          <h4>Table Conversation Mastery</h4>
+          <p>Reading the room, listening deeply, and keeping conversation balanced and inclusive at any table.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 7</div>
+          <h4>Digital Discretion &amp; Social Pillars</h4>
+          <p>Managing phones and devices respectfully, plus the core habits &mdash; polite phrasing, timely thank-yous &mdash; that anchor every interaction.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 8</div>
+          <h4>Dress for Success</h4>
+          <p>Building a polished, professional wardrobe foundation for both women and men, from fabric choices to classic silhouettes.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 9</div>
+          <h4>Style Pitfalls to Avoid</h4>
+          <p>The most common wardrobe missteps &mdash; for every gender &mdash; that undercut an otherwise polished presentation.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 10</div>
+          <h4>The Formal Place Setting &amp; Service Manners</h4>
+          <p>Reading a formal table, starting a meal in step with the group, and proper napkin etiquette.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 11</div>
+          <h4>Dining Mechanics in Practice</h4>
+          <p>Bread, drinks, passing dishes, and managing soup &mdash; the small physical details that separate confident diners from nervous ones.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Week 12</div>
+          <h4>Polished Finish</h4>
+          <p>Handling spills and mistakes gracefully, avoiding common dining-room missteps, and the etiquette of a graceful exit &mdash; tying every lesson together.</p>
+        </div>
+      </div>
+
+      <div class="hero-ctas reveal" style="justify-content:center; margin:36px 0 0;">
+        <a class="btn btn-primary" href="consultation.html">Schedule a Consultation for Pricing</a>
+      </div>
+    </div>
+  </section>
+
   <!-- LEGI'TPRO -->
   <section class="section section-legitpro" id="legitpro">
     <div class="container">
@@ -858,35 +1041,68 @@
       </p>
       <p class="lp-sub-badge reveal">Excellence in public service begins with excellence in staff development.</p>
 
-      <!-- SERVICE TRACKS (teaser only) -->
+      <!-- SERVICE TRACKS -->
       <div class="lp-tracks-head reveal">
         <span class="lp-eyebrow">Training &amp; Development Tracks</span>
         <h3>Built for Every Level of Public Service</h3>
       </div>
 
       <!--
-        UPDATED (beginner note):
-        The full list of 7 tracks and the "Training Investment" pricing
-        table used to live directly on this public page. They now live
-        on a separate, password-protected page: legitpro.html.
+        BEGINNER NOTE:
+        This is the full track grid (6 cards covering all 7 tracks),
+        shown here on the public page again. No pricing is shown here
+        on purpose — pricing only lives on the password-protected
+        legitpro.html page (see the "Schedule a Consultation" button
+        and the "Existing clients" link further down).
 
-        Why: Lynette wanted pricing to stay private and only be shown
-        after someone books a consultation, instead of being visible
-        to any visitor on the main site.
-
-        If you ever want to add pricing back here, look at legitpro.html
-        for the original markup/CSS classes (lp-grid, lp-card, lp-pricing,
-        lp-pricing-grid, lp-tier) — they're unchanged, just moved.
+        Each card below is one lp-card block (a div element with the
+        class "lp-card"). To edit a track's title or description, find
+        its "Track" number in the text and change the wording inside
+        the heading or paragraph tags. To add a new track, copy one
+        whole lp-card block (from its opening div down to its matching
+        closing div), paste it after the last one, and edit the text
+        inside.
       -->
-      <p class="lp-mission reveal" style="max-width:640px; margin:0 auto 10px;">
-        Seven training tracks take staff from onboarding through senior
-        leadership &mdash; constituent casework, communication, data
-        &amp; reporting, and policy alignment, plus ongoing continuing
-        education. Full curriculum details and current pricing are
-        shared after a short consultation call.
-      </p>
+      <div class="lp-grid reveal">
+        <div class="lp-card">
+          <div class="num">Track I</div>
+          <h4>Orientation &amp; Legislative Foundations</h4>
+          <p>Develops understanding of city/state government structure, office roles, ethics, and constituent priorities.</p>
+          <span class="badge">Beginner</span>
+        </div>
+        <div class="lp-card">
+          <div class="num">Track II</div>
+          <h4>Constituent Services &amp; Casework Management</h4>
+          <p>Enhances staff effectiveness in intake, case documentation, and agency navigation.</p>
+          <span class="badge">Intermediate</span>
+        </div>
+        <div class="lp-card">
+          <div class="num">Track III</div>
+          <h4>Communication &amp; Relationship Building</h4>
+          <p>Builds strong communication, cultural awareness, and conflict resolution skills for legislative environments.</p>
+          <span class="badge">All Levels</span>
+        </div>
+        <div class="lp-card">
+          <div class="num">Track IV</div>
+          <h4>Data, Reporting &amp; Impact Evaluation</h4>
+          <p>Introduces staff to CRM systems, data analysis, and outcome reporting to measure constituent impact.</p>
+          <span class="badge">Intermediate – Advanced</span>
+        </div>
+        <div class="lp-card">
+          <div class="num">Track V</div>
+          <h4>Policy &amp; Legislative Alignment</h4>
+          <p>Trains chiefs of staff and senior aides to translate community needs into policy, coordinate initiatives, and track legislation.</p>
+          <span class="badge">Advanced</span>
+        </div>
+        <div class="lp-card">
+          <div class="num">Track VI &amp; VII</div>
+          <h4>Professional Growth, Leadership &amp; Continuing Education</h4>
+          <p>Project management, mentorship models, and quarterly specialized sessions including compliance, technology tools, and trauma-informed service.</p>
+          <span class="badge">All Levels</span>
+        </div>
+      </div>
 
-      <div class="hero-ctas reveal" style="justify-content:center; margin:26px 0 8px;">
+      <div class="hero-ctas reveal" style="justify-content:center; margin:36px 0 8px;">
         <!-- This button sends visitors to the consultation request form
              (consultation.html). That form lets them pick which
              service they're interested in (Legi'tPro or another GWWG
@@ -895,13 +1111,20 @@
         <a class="btn btn-primary" href="consultation.html">Schedule a Consultation for Pricing</a>
       </div>
 
-      <!-- INVESTMENT (teaser row only — full pricing moved to legitpro.html) -->
-      <div class="lp-pricing reveal">
-        <h3>Training Investment</h3>
-        <p class="lp-pricing-sub">
-          Flexible pricing for individual participants, office cohorts, and
-          city/state contracts &mdash; custom proposals available.
-          <a href="legitpro.html" style="color:var(--brass); text-decoration:underline;">Existing clients: view full pricing here</a>.
+      <!-- BEGINNER NOTE: this box is for people who already had a
+           consultation with Lynette and are actively in a Legi'tPro
+           training program with her — NOT the general public, and
+           not just anyone who has booked before. It links to the
+           password-protected pricing/program page (legitpro.html).
+           The label below ("For Legi'tPro Consultation Clients")
+           makes that audience clear so a first-time visitor doesn't
+           think this is for them. If Lynette wants different
+           wording, just edit the text inside the <p> tags below. -->
+      <div class="reveal" style="text-align:center; margin:20px auto 0; max-width:520px; padding-top:16px; border-top:1px solid rgba(251,244,233,.15);">
+        <p style="margin:0 0 4px; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--brass);">For Legi'tPro Consultation Clients</p>
+        <p style="margin:0; color:#a09888; font-size:.85rem;">
+          Already booked a consultation with Lynette about Legi'tPro?
+          <a href="legitpro.html" style="color:var(--brass); text-decoration:underline;">View your pricing here</a>.
         </p>
       </div>
 
@@ -913,7 +1136,7 @@
           <p style="margin-top:4px; color:#a09888; font-size:.82rem;">Director of Strategic Partnerships, New York City Council<br>Former Director of Special Projects, New York State Senate</p>
         </div>
         <div class="lp-contact-links">
-          <a class="lp-link" href="tel:+13475600517">(347) 560-0517</a>
+          <a class="lp-link" href="tel:+16468206777">(646) 820-6777</a>
           <a class="lp-link" href="mailto:LShelborneBarfield@gmail.com">LShelborneBarfield@gmail.com</a>
         </div>
       </div>
@@ -934,7 +1157,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Let's Talk</span>
-        <h2 style="margin-top:.5rem;">Ready to Book the Experience?</h2>
+        <h2 style="margin-top:.5rem;">Consultation. Proposals. Fees.</h2>
         <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
       </div>
 
@@ -954,9 +1177,15 @@
         <p>Proposal &amp; fees available for serious inquiries.</p>
       </div>
 
+      <!-- BEGINNER NOTE: this button is the main way visitors request
+           a consultation — it sends them to consultation.html, the
+           form that emails Lynette their details. The Call Now / Email
+           Us buttons stay as quick alternatives for people who'd
+           rather just call or email directly. -->
       <div class="contact-cta-row reveal">
+        <a class="btn btn-primary" href="consultation.html">Schedule a Consultation</a>
         <a class="btn btn-outline" href="tel:+16468206777">Call Now</a>
-        <a class="btn btn-primary" href="mailto:Lsb@girlswhowearglasses.org">Email Us</a>
+        <a class="btn btn-outline" href="mailto:Lsb@girlswhowearglasses.org">Email Us</a>
       </div>
     </div>
   </section>

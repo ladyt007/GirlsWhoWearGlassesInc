@@ -8,35 +8,41 @@
   ============================================================
   BEGINNER NOTES — read this before editing this file
   ============================================================
-  This is a simple "consultation request" form. It asks the
-  visitor:
-    - which service they're interested in (a dropdown)
-    - the age range it's for (a dropdown: 9+ or Adults)
-    - their name / email / phone / a short note
+  This form now submits through Web3Forms — a free service that
+  takes the visitor's answers and emails them straight to
+  Lynette. This is different from an earlier version of this
+  file, which just opened a pre-filled email draft (mailto).
+  Web3Forms is better because:
+    - It works the same way on ANY host (Netlify now, GoDaddy
+      later, anywhere) — nothing to change when the site moves.
+    - It doesn't depend on the visitor having an email app set
+      up on their device.
+    - The visitor sees a clean "thank you" message right on the
+      page instead of being bounced out to their email app.
 
-  HOW IT SENDS THE INFO (important!):
-  This is a static website — there is no server or database
-  behind it, so this form can't "submit" to a database the way
-  forms on bigger sites do. Instead, when the visitor clicks
-  "Send Request", the JavaScript at the bottom of this file
-  builds a pre-filled email (using their answers) and opens it
-  in whatever email app is set up on their device (Mail, Gmail,
-  Outlook, etc.) addressed to Lynette. The visitor then just
-  hits "send" in their own email app.
+  ONE-TIME SETUP REQUIRED (takes about 2 minutes):
+  1. Go to https://web3forms.com
+  2. Enter the email address that should receive submissions
+     (currently Lsb@girlswhowearglasses.org) and click "Create
+     Access Key."
+  3. Web3Forms emails that address a free Access Key — a string
+     that looks like: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  4. Come back to this file, search for: WEB3FORMS_ACCESS_KEY
+  5. Replace the placeholder text between the quotes with the
+     real key you were emailed. Save the file.
+  That's it — submissions will start arriving by email. Until
+  you do this step, the form will show an error when someone
+  tries to submit it, because the placeholder key isn't real.
 
-  This means:
-  - No visitor data is stored anywhere on this website.
-  - The visitor's own email app must be configured, or nothing
-    will open. (This is a known limitation of simple static
-    sites — a "real" form that saves submissions would need a
-    form service like Formspree/Netlify Forms, or a backend.)
+  TO CHANGE WHICH EMAIL ADDRESS RECEIVES SUBMISSIONS LATER:
+  Web3Forms ties submissions to whichever email address the
+  Access Key was created for — so to change the destination
+  inbox, go back to web3forms.com and generate a new key for
+  the new address, then swap it in here the same way.
 
-  TO CHANGE WHERE REQUESTS ARE SENT:
-  Search this file for CONSULTATION_EMAIL and change the address.
-
-  TO ADD/REMOVE A SERVICE FROM THE DROPDOWN:
-  Look for the <select id="service"> block below and add or
-  remove an <option> line.
+  TO ADD/REMOVE AN OPTION FROM A DROPDOWN:
+  Look for <select id="experience-type"> or <select id="group-size">
+  below and add or remove an <option> line inside it.
   ============================================================
 -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%23FBF4E9'/%3E%3C/svg%3E">
@@ -74,7 +80,7 @@
   .form-card{
     background:var(--ivory);
     border-radius:12px;
-    max-width:560px;
+    max-width:600px;
     width:100%;
     padding:clamp(28px,5vw,48px);
     box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
@@ -82,6 +88,11 @@
   .form-card .eyebrow{color:var(--terracotta); text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; font-weight:600;}
   .form-card h1{font-family:var(--font-display); color:var(--sage-deep); font-size:1.7rem; margin:.4rem 0 6px;}
   .form-card .lead{color:#5b564d; font-size:.95rem; margin:0 0 26px;}
+
+  /* This lays two fields side by side on wider screens (like Name +
+     Title, or Phone + Email) and stacks them on narrow/mobile screens. */
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:520px){ .field-row{grid-template-columns:1fr;} }
 
   label{display:block; font-weight:600; font-size:.9rem; margin:0 0 6px;}
   .field{margin-bottom:18px;}
@@ -110,6 +121,40 @@
     margin-top:8px;
   }
   button[type="submit"]:hover{background:var(--terracotta-deep);}
+  button[type="submit"]:disabled{opacity:.6; cursor:not-allowed;}
+
+  .response-note{
+    background:var(--cream-panel);
+    border-left:3px solid var(--brass);
+    border-radius:4px;
+    padding:12px 16px;
+    font-size:.85rem;
+    color:#4a463e;
+    margin:0 0 22px;
+  }
+
+  /* Shown after a successful submission, in place of the form. */
+  .success-message{
+    display:none;
+    text-align:center;
+    padding:20px 0;
+  }
+  .success-message .checkmark{font-size:2.4rem; margin-bottom:10px;}
+  .success-message h2{font-family:var(--font-display); color:var(--sage-deep); font-size:1.4rem; margin:0 0 8px;}
+  .success-message p{color:#5b564d; font-size:.95rem; margin:0;}
+
+  /* Shown only if the submission fails (e.g. the access key isn't
+     set up yet, or the visitor lost their internet connection). */
+  .error-message{
+    display:none;
+    background:#fbeae5;
+    border-left:3px solid var(--terracotta-deep);
+    border-radius:4px;
+    padding:12px 16px;
+    font-size:.85rem;
+    color:var(--terracotta-deep);
+    margin:0 0 18px;
+  }
 
   .back-link{display:inline-block; margin-top:18px; color:var(--sage-deep); font-size:.85rem;}
   .note{font-size:.78rem; color:#7a7468; margin-top:14px;}
@@ -120,112 +165,205 @@
   <div class="form-card">
     <span class="eyebrow">Girls Who Wear Glasses, Inc.</span>
     <h1>Schedule a Consultation</h1>
-    <p class="lead">Tell us a bit about what you're looking for and we'll follow up to
-       schedule a call and share pricing.</p>
+    <p class="lead">Tell us about your event or program and we'll follow up with
+       next steps and pricing.</p>
 
-    <!--
-      This <form> does not "submit" to a server. The button below is
-      type="button" (not type="submit") on purpose, and a small
-      script (bottom of the page) reads the values and opens an
-      email draft instead. See the notes at the top of this file.
-    -->
+    <!-- This banner sets the expectation up front, as requested. -->
+    <p class="response-note">We will get back to you within 24&ndash;48 hours.</p>
+
+    <!-- Shown only if a submission fails. Hidden by default. -->
+    <div class="error-message" id="error-message">
+      Something went wrong sending your request. Please try again, or reach
+      out directly at (646) 820-6777 / Lsb@girlswhowearglasses.org.
+    </div>
+
     <form id="consult-form">
 
+      <div class="field-row">
+        <div class="field">
+          <label for="full-name">Name</label>
+          <input type="text" id="full-name" required>
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="e.g. Chief of Staff, Principal">
+        </div>
+      </div>
+
       <div class="field">
-        <label for="service">Which service are you interested in?</label>
-        <select id="service" required>
-          <option value="" disabled selected>Select a service&hellip;</option>
+        <label for="organization">Organization</label>
+        <input type="text" id="organization" placeholder="School, office, company, or 'N/A'">
+      </div>
+
+      <div class="field">
+        <label for="experience-type">Experience Type</label>
+        <select id="experience-type" required>
+          <option value="" disabled selected>Select what you're interested in&hellip;</option>
           <option value="Legi'tPro (legislative staff training)">Legi'tPro™ — Legislative Staff Training</option>
           <option value="Etiquette & Social Graces Workshop">Etiquette &amp; Social Graces Workshop</option>
+          <option value="12-Week Etiquette & Grace Course">12-Week Etiquette &amp; Grace Course</option>
           <option value="Private Event">Private Event</option>
-          <option value="School / Community Group Session">School or Community Group Session</option>
-          <option value="Personalized Session">Personalized 1:1 Session</option>
+          <option value="School & Community Group Session">School &amp; Community Group Session</option>
+          <option value="Personalized Session">Personalized Session</option>
+          <option value="Restaurant Dining Experience">Restaurant Dining Experience</option>
           <option value="Something else / not sure yet">Something else / not sure yet</option>
         </select>
       </div>
 
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+      </div>
+
       <div class="field">
-        <label for="age-range">Age range this is for</label>
-        <select id="age-range" required>
-          <option value="" disabled selected>Select an age range&hellip;</option>
-          <option value="Youth (9+)">Youth (9+)</option>
-          <option value="Adults">Adults</option>
+        <label for="group-size">Estimated Number of Participants</label>
+        <select id="group-size" required>
+          <option value="" disabled selected>Select a range&hellip;</option>
+          <option value="5-35">5&ndash;35</option>
+          <option value="40-50">40&ndash;50</option>
+          <option value="50+">50+</option>
         </select>
       </div>
 
-      <div class="field">
-        <label for="full-name">Your name</label>
-        <input type="text" id="full-name" required>
+      <div class="field-row">
+        <div class="field">
+          <label for="website">Website</label>
+          <input type="text" id="website" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label for="social">Social Media</label>
+          <input type="text" id="social" placeholder="Optional — @handle or link">
+        </div>
       </div>
 
       <div class="field">
-        <label for="email">Email address</label>
-        <input type="email" id="email" required>
-      </div>
-
-      <div class="field">
-        <label for="phone">Phone number (optional)</label>
-        <input type="tel" id="phone">
+        <label for="event-date">Anticipated Date of Event</label>
+        <input type="date" id="event-date">
       </div>
 
       <div class="field">
         <label for="notes">Anything else we should know? (optional)</label>
-        <textarea id="notes" placeholder="Group size, preferred dates, location, etc."></textarea>
+        <textarea id="notes" placeholder="Location, budget range, special requests, etc."></textarea>
       </div>
 
-      <button type="button" id="send-request">Send Request</button>
+      <!-- This hidden field never shows to real visitors. Bots that
+           auto-fill every field on a page will fill this one in too,
+           and Web3Forms silently discards any submission where it's
+           not empty — a simple, invisible spam filter. -->
+      <input type="checkbox" name="botcheck" style="display:none;">
+
+      <button type="submit" id="send-request">Send Request</button>
     </form>
 
+    <!-- Shown after a successful submission, in place of the form above. -->
+    <div class="success-message" id="success-message">
+      <div class="checkmark">&#10003;</div>
+      <h2>Request Sent!</h2>
+      <p>Thanks for reaching out — we'll get back to you within 24&ndash;48 hours.</p>
+    </div>
+
     <a class="back-link" href="index.html">&larr; Back to the main site</a>
-    <p class="note">Clicking "Send Request" opens a pre-filled email in your email
-       app so you can review and send it &mdash; nothing is submitted automatically.</p>
   </div>
 
   <script>
     // ============================================================
     // BEGINNER-FRIENDLY EXPLANATION OF THIS SCRIPT
     // ============================================================
-    // Where the consultation request email should go. Change this
-    // address if requests should go somewhere else.
-    const CONSULTATION_EMAIL = "LShelborneBarfield@gmail.com";
+    // This is the free access key from web3forms.com that tells
+    // Web3Forms which inbox to deliver submissions to. See the
+    // setup instructions in the big comment at the top of this file
+    // for how to get your own key and paste it in here.
+    const WEB3FORMS_ACCESS_KEY = "PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE";
 
-    document.getElementById('send-request').addEventListener('click', function () {
-      // 1. Read every field's current value.
-      const service = document.getElementById('service').value;
-      const ageRange = document.getElementById('age-range').value;
-      const fullName = document.getElementById('full-name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const notes = document.getElementById('notes').value;
+    const form = document.getElementById('consult-form');
+    const submitButton = document.getElementById('send-request');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
 
-      // 2. Very basic check that the required fields are filled in.
-      //    (The "required" attribute on the inputs above already helps
-      //    with this in most browsers, but this is a backup check.)
-      if (!service || !ageRange || !fullName || !email) {
-        alert('Please fill in the service, age range, name, and email before sending.');
+    form.addEventListener('submit', async function (e) {
+      // Stop the browser's normal page-reload form submission — we're
+      // sending the data ourselves with fetch() instead, further down.
+      e.preventDefault();
+
+      // Simple spam trap check (see the hidden "botcheck" field above).
+      if (form.botcheck.checked) {
         return;
       }
 
-      // 3. Build the subject line and the body text of the email.
-      const subject = 'Consultation Request: ' + service;
-      const body =
-        'Service requested: ' + service + '\n' +
-        'Age range: ' + ageRange + '\n' +
-        'Name: ' + fullName + '\n' +
-        'Email: ' + email + '\n' +
-        'Phone: ' + (phone || 'Not provided') + '\n\n' +
-        'Notes:\n' + (notes || 'None provided');
+      // 1. Read every field's current value.
+      const fullName = document.getElementById('full-name').value;
+      const title = document.getElementById('title').value;
+      const organization = document.getElementById('organization').value;
+      const experienceType = document.getElementById('experience-type').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const groupSize = document.getElementById('group-size').value;
+      const website = document.getElementById('website').value;
+      const social = document.getElementById('social').value;
+      const eventDate = document.getElementById('event-date').value;
+      const notes = document.getElementById('notes').value;
 
-      // 4. "mailto:" links open the visitor's own email app with the
-      //    address, subject, and body already filled in.
-      //    encodeURIComponent() makes sure spaces/punctuation/line
-      //    breaks are formatted correctly inside the link.
-      const mailtoLink =
-        'mailto:' + CONSULTATION_EMAIL +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
+      // 2. Basic check that the required fields are filled in.
+      if (!fullName || !experienceType || !phone || !email || !groupSize) {
+        alert('Please fill in your name, experience type, phone, email, and estimated group size before sending.');
+        return;
+      }
 
-      window.location.href = mailtoLink;
+      // 3. Disable the button and show a "sending" state so the
+      //    visitor doesn't click it twice while we wait for a reply.
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      errorMessage.style.display = 'none';
+
+      // 4. Build the data package Web3Forms expects. access_key tells
+      //    it which inbox to use; subject is the email subject line;
+      //    every other field becomes a row in the email body.
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'Consultation Request: ' + experienceType,
+        'Name': fullName,
+        'Title': title || 'Not provided',
+        'Organization': organization || 'Not provided',
+        'Experience Type': experienceType,
+        'Phone': phone,
+        'Email': email,
+        'Estimated Participants': groupSize,
+        'Website': website || 'Not provided',
+        'Social Media': social || 'Not provided',
+        'Anticipated Event Date': eventDate || 'Not provided',
+        'Notes': notes || 'None provided'
+      };
+
+      // 5. Send it to Web3Forms and react to whether it worked.
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          // Hide the form, show the thank-you message.
+          form.style.display = 'none';
+          successMessage.style.display = 'block';
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
+        // Something went wrong (bad access key, no internet, etc.) —
+        // show the error banner and re-enable the button so they can
+        // try again.
+        errorMessage.style.display = 'block';
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Request';
+      }
     });
   </script>
 
