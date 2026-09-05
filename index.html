@@ -818,19 +818,38 @@
   .section-programs{background:var(--cream-panel);}
   .program-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:22px;
+    max-width:840px;
+    margin:0 auto;
   }
-  @media (max-width:880px){ .program-grid{grid-template-columns:1fr;} }
+  @media (max-width:720px){ .program-grid{grid-template-columns:1fr;} }
+  /* Same marble-behind-the-text technique used on the "What You'll
+     Learn" card and the topic cards: the marble image sits as the
+     card's background, and a semi-transparent white layer (opacity
+     .55) sits on top of it so the title/description stay readable.
+     Lower that .55 for more marble showing through, raise it for
+     easier reading. */
   .program-card{
     display:block;
-    background:var(--white);
+    background-image:url("Marble Background.png");
+    background-size:cover;
+    background-position:center;
     border:1px solid #e9e1d1;
     border-top:3px solid var(--terracotta);
     border-radius:10px;
     padding:32px 26px;
+    position:relative;
+    overflow:hidden;
     transition:transform .3s ease, box-shadow .3s ease;
   }
+  .program-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(255,255,255,.55);
+    z-index:0;
+  }
+  .program-card > *{position:relative; z-index:1;}
   .program-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(46,42,38,.35);}
   .program-card .program-eyebrow{
     font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
@@ -875,54 +894,6 @@
   a.badge-pill:hover{transform:translateY(-2px); box-shadow:0 10px 20px -10px rgba(201,154,68,.5);}
 
   /* ===== LEGI'TPRO: PRICING PASSWORD GATE ===== */
-  /* Unlike the old legitpro.html, the password gate now only wraps
-     the PRICING numbers, not the whole page — the mission and track
-     grid above are fully public. See the two-step JS at the bottom of
-     legitpro.html for how the gate/unlock logic works. */
-  .pricing-gate{
-    margin-top:52px;
-    background:rgba(251,244,233,.04);
-    border:1px solid rgba(201,154,68,.2);
-    border-radius:12px;
-    padding:44px clamp(22px,4vw,48px);
-    text-align:center;
-    max-width:480px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .pricing-gate h3{
-    font-family:var(--font-display);
-    color:var(--ivory);
-    font-size:1.4rem;
-    margin:0 0 8px;
-  }
-  .pricing-gate p{color:#cfc8ba; font-size:.9rem; margin:0 0 20px;}
-  .pricing-gate input[type="password"]{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:1px solid rgba(251,244,233,.3);
-    background:rgba(251,244,233,.08);
-    color:var(--ivory);
-    font-size:1rem;
-    font-family:var(--font-body);
-    margin-bottom:14px;
-  }
-  .pricing-gate input[type="password"]::placeholder{color:#a09888;}
-  .pricing-gate button{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:none;
-    background:var(--terracotta);
-    color:var(--ivory);
-    font-family:var(--font-body);
-    font-weight:600;
-    font-size:1rem;
-    cursor:pointer;
-  }
-  .pricing-gate button:hover{background:var(--terracotta-deep);}
-  .pricing-gate-error{color:#e3a08c; font-size:.85rem; margin-top:12px; display:none;}
 
 </style>
 </head>
@@ -938,7 +909,6 @@
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-      <a href="course.html">6 Track Curriculum</a>
       <a href="legitpro.html">Legi'tPro&trade;</a>
       <a href="index.html#contact">For More Information</a>
       <a class="btn btn-outline" href="tel:+16468206777">(646) 820-6777</a>
@@ -953,7 +923,6 @@
 <div class="mobile-panel" id="mobilePanel">
   <a href="index.html">Home</a>
   <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-  <a href="course.html">6 Track Curriculum</a>
   <a href="legitpro.html">Legi'tPro&trade;</a>
   <a href="index.html#contact">For More Information</a>
   <a class="btn btn-primary" href="tel:+16468206777">Call (646) 820-6777</a>
@@ -989,7 +958,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Explore Our Programs</span>
-        <h2>Three Ways to Work With Us</h2>
+        <h2>Two Ways to Work With Us</h2>
       </div>
       <div class="program-grid reveal">
         <a class="program-card" href="etiquette-graces.html">
@@ -997,12 +966,6 @@
           <h3>Etiquette &amp; Graces</h3>
           <p>Our signature curriculum on manners, presence, and dining etiquette &mdash; delivered as private events, group sessions, or virtual intensives.</p>
           <span class="program-link">Explore Etiquette &amp; Graces &rarr;</span>
-        </a>
-        <a class="program-card" href="course.html">
-          <span class="program-eyebrow">Structured Learning</span>
-          <h3>6 Track Curriculum</h3>
-          <p>The full Etiquette &amp; Graces curriculum organized into six focused tracks, from first impressions to formal dining.</p>
-          <span class="program-link">Explore the 6 Track Curriculum &rarr;</span>
         </a>
         <a class="program-card" href="legitpro.html">
           <span class="program-eyebrow">For Legislative Offices</span>
