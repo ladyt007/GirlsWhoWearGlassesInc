@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legi'tPro™ Pricing | Girls Who Wear Glasses, Inc.</title>
+<!--
+  ============================================================
+  BEGINNER NOTES — read this before editing this file
+  ============================================================
+  This is the standalone, password-protected page that holds
+  Legi'tPro's actual pricing. It is NOT part of the main site's
+  navigation on purpose — it's only reachable through the "For
+  Legi'tPro Consultation Clients" link on legitpro.html, for
+  people who've already spoken with Lynette.
+
+  IMPORTANT — what this password gate does and does NOT do:
+  - It DOES stop a casual visitor who clicks the link from
+    seeing pricing without the password.
+  - It does NOT provide real security. This is a static website
+    (no server/database), so the password itself sits in this
+    file's JavaScript in plain text. Anyone technical enough to
+    view this page's source code (or the file on GitHub) can
+    read the password. Don't put anything here you wouldn't
+    want a determined person to eventually see.
+
+  TO CHANGE THE PASSWORD:
+  1. Search this file for: const SITE_PASSWORD =
+  2. Replace the text between the quotes with the new password.
+  3. Save and re-upload/redeploy the file.
+  ============================================================
+-->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%23FBF4E9'/%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --ivory:#FBF4E9;
+    --cream-panel:#F3EBDC;
+    --sage:#7C8A6B;
+    --sage-deep:#566048;
+    --terracotta:#BD6240;
+    --terracotta-deep:#9B4E32;
+    --brass:#C99A44;
+    --charcoal:#2E2A26;
+    --white:#ffffff;
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:'Jost', 'Helvetica Neue', Arial, sans-serif;
+    --container: 1140px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--charcoal);
+    background:var(--charcoal);
+    line-height:1.6;
+  }
+  .container{max-width:var(--container); margin:0 auto; padding:0 24px;}
+
+  /* ===== PASSWORD GATE ===== */
+  #gate{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--charcoal);
+    padding:24px;
+  }
+  .gate-card{
+    background:var(--ivory);
+    border-radius:10px;
+    padding:44px clamp(24px,5vw,56px);
+    max-width:440px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .gate-card h1{
+    font-family:var(--font-display);
+    color:var(--sage-deep);
+    font-size:1.6rem;
+    margin:0 0 6px;
+  }
+  .gate-card p{color:#5b564d; font-size:.95rem; margin:0 0 22px;}
+  .gate-card input[type="password"]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:6px;
+    border:1px solid #d8cfba;
+    font-size:1rem;
+    font-family:var(--font-body);
+    margin-bottom:14px;
+  }
+  .gate-card button{
+    width:100%;
+    padding:12px 14px;
+    border-radius:6px;
+    border:none;
+    background:var(--terracotta);
+    color:var(--ivory);
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:1rem;
+    cursor:pointer;
+  }
+  .gate-card button:hover{background:var(--terracotta-deep);}
+  #gate-error{color:var(--terracotta-deep); font-size:.85rem; margin-top:12px; display:none;}
+  .gate-back{display:block; margin-top:18px; color:var(--sage-deep); font-size:.85rem;}
+
+  /* ===== PROTECTED CONTENT (hidden until password is correct) ===== */
+  #protected-content{display:none; background:var(--ivory);}
+  .page-header{
+    background:var(--charcoal);
+    color:var(--ivory);
+    padding:60px 0 40px;
+    text-align:center;
+  }
+  .page-header .eyebrow{color:var(--brass); text-transform:uppercase; letter-spacing:.14em; font-size:.8rem;}
+  .page-header h1{font-family:var(--font-display); font-size:clamp(1.9rem,1.4rem + 1.6vw,2.6rem); margin:.5rem 0 0;}
+  .page-header .lp-tagline{font-family:var(--font-display); font-style:italic; color:#e7ded0; margin-top:10px;}
+
+  .section{padding:56px 0;}
+  .section h2{font-family:var(--font-display); color:var(--sage-deep); font-size:1.7rem; margin-bottom:8px;}
+  .section .lead{color:#5b564d; max-width:680px; margin-bottom:32px;}
+
+  .lp-pricing{background:var(--cream-panel); padding:44px; border-radius:12px;}
+  .lp-pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px;}
+  @media (max-width:880px){ .lp-pricing-grid{grid-template-columns:1fr;} }
+  .lp-tier{background:var(--white); border-radius:10px; padding:26px 22px;}
+  .lp-tier-label{font-weight:600; margin-bottom:6px;}
+  .lp-tier-price{font-family:var(--font-display); font-size:1.4rem; color:var(--terracotta-deep); margin-bottom:10px;}
+  .lp-tier-desc{font-size:.9rem; color:#4a463e;}
+
+  .back-link{display:inline-block; margin:0 0 30px; color:var(--sage-deep); font-weight:600;}
+</style>
+</head>
+<body>
+
+  <!-- ============ PASSWORD GATE (visible first) ============ -->
+  <div id="gate">
+    <div class="gate-card">
+      <h1>Legi'tPro™ Pricing</h1>
+      <p>This page is for clients and prospective clients who have discussed
+         Legi'tPro™ with Lynette. Enter the password she provided to continue.</p>
+      <input type="password" id="gate-password" placeholder="Password" autocomplete="off">
+      <button type="button" id="gate-submit">View Pricing</button>
+      <div id="gate-error">That password isn't right. Please try again, or contact Lynette for the password.</div>
+      <a class="gate-back" href="legitpro.html">&larr; Back to Legi'tPro</a>
+    </div>
+  </div>
+
+  <!-- ============ PROTECTED CONTENT ============ -->
+  <div id="protected-content">
+
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">A Girls Who Wear Glasses, Inc. Initiative</span>
+        <h1>Legi'tPro™ — Training Investment</h1>
+        <p class="lp-tagline">"How We Serve" — Advancing the Standard of Legislative Excellence</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <a class="back-link" href="legitpro.html">&larr; Back to Legi'tPro</a>
+
+        <h2>Training Investment</h2>
+        <p class="lead">Flexible pricing for individual participants, office cohorts, and city/state contracts &mdash; custom proposals available.</p>
+
+        <div class="lp-pricing">
+          <div class="lp-pricing-grid">
+            <div class="lp-tier">
+              <div class="lp-tier-label">Individual Participants</div>
+              <div class="lp-tier-price">$295 – $1,295 <small style="font-size:.55em; font-weight:400;">/ person</small></div>
+              <div class="lp-tier-desc">Beginner through Advanced levels. Ideal for staff sent by elected officials or self-sponsored registrants.</div>
+            </div>
+            <div class="lp-tier">
+              <div class="lp-tier-label">Group &amp; Office Packages</div>
+              <div class="lp-tier-price">$3,500 – $12,000</div>
+              <div class="lp-tier-desc">Teams of up to 20 staff. Includes District Essentials Package, Constituent Excellence Program, and Leadership &amp; Strategic Alignment Retreat.</div>
+            </div>
+            <div class="lp-tier">
+              <div class="lp-tier-label">Annual Contracts</div>
+              <div class="lp-tier-price">$15,000 – $60,000</div>
+              <div class="lp-tier-desc">Silver, Gold, and Platinum subscription plans for City or State agencies seeking continuous development for their teams.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <p><strong>Lynette Shelborne-Barfield</strong><br>
+          Founder &amp; Principal Consultant, Legi'tPro™<br>
+          <a href="tel:+16468206777">(646) 820-6777</a> &nbsp;|&nbsp;
+          <a href="mailto:LShelborneBarfield@gmail.com">LShelborneBarfield@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // BEGINNER-FRIENDLY EXPLANATION OF THIS SCRIPT
+    // ============================================================
+    // 1. SITE_PASSWORD is the password visitors must type in.
+    //    Change the text inside the quotes to set a new password.
+    const SITE_PASSWORD = "LegitProVIP2026";
+
+    // 2. Grab references to the HTML elements we need to work with.
+    const gate = document.getElementById('gate');
+    const content = document.getElementById('protected-content');
+    const passwordInput = document.getElementById('gate-password');
+    const submitButton = document.getElementById('gate-submit');
+    const errorMessage = document.getElementById('gate-error');
+
+    // 3. This function runs when the visitor clicks "View Pricing"
+    //    (or presses Enter in the password box).
+    function checkPassword() {
+      if (passwordInput.value === SITE_PASSWORD) {
+        gate.style.display = 'none';
+        content.style.display = 'block';
+        // Remember this for the current browser tab only, so a
+        // visitor doesn't have to retype the password if they
+        // reload the page (sessionStorage clears when the tab closes).
+        sessionStorage.setItem('legitproPricingUnlocked', 'yes');
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    }
+
+    submitButton.addEventListener('click', checkPassword);
+    passwordInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    // 4. If this visitor already unlocked the page earlier in this
+    //    browser tab/session, skip the gate automatically.
+    if (sessionStorage.getItem('legitproPricingUnlocked') === 'yes') {
+      gate.style.display = 'none';
+      content.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

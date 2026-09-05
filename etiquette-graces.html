@@ -875,54 +875,6 @@
   a.badge-pill:hover{transform:translateY(-2px); box-shadow:0 10px 20px -10px rgba(201,154,68,.5);}
 
   /* ===== LEGI'TPRO: PRICING PASSWORD GATE ===== */
-  /* Unlike the old legitpro.html, the password gate now only wraps
-     the PRICING numbers, not the whole page — the mission and track
-     grid above are fully public. See the two-step JS at the bottom of
-     legitpro.html for how the gate/unlock logic works. */
-  .pricing-gate{
-    margin-top:52px;
-    background:rgba(251,244,233,.04);
-    border:1px solid rgba(201,154,68,.2);
-    border-radius:12px;
-    padding:44px clamp(22px,4vw,48px);
-    text-align:center;
-    max-width:480px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .pricing-gate h3{
-    font-family:var(--font-display);
-    color:var(--ivory);
-    font-size:1.4rem;
-    margin:0 0 8px;
-  }
-  .pricing-gate p{color:#cfc8ba; font-size:.9rem; margin:0 0 20px;}
-  .pricing-gate input[type="password"]{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:1px solid rgba(251,244,233,.3);
-    background:rgba(251,244,233,.08);
-    color:var(--ivory);
-    font-size:1rem;
-    font-family:var(--font-body);
-    margin-bottom:14px;
-  }
-  .pricing-gate input[type="password"]::placeholder{color:#a09888;}
-  .pricing-gate button{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:none;
-    background:var(--terracotta);
-    color:var(--ivory);
-    font-family:var(--font-body);
-    font-weight:600;
-    font-size:1rem;
-    cursor:pointer;
-  }
-  .pricing-gate button:hover{background:var(--terracotta-deep);}
-  .pricing-gate-error{color:#e3a08c; font-size:.85rem; margin-top:12px; display:none;}
 
 </style>
 </head>
@@ -938,7 +890,6 @@
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-      <a href="course.html">6 Track Curriculum</a>
       <a href="legitpro.html">Legi'tPro&trade;</a>
       <a href="index.html#contact">For More Information</a>
       <a class="btn btn-outline" href="tel:+16468206777">(646) 820-6777</a>
@@ -953,7 +904,6 @@
 <div class="mobile-panel" id="mobilePanel">
   <a href="index.html">Home</a>
   <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-  <a href="course.html">6 Track Curriculum</a>
   <a href="legitpro.html">Legi'tPro&trade;</a>
   <a href="index.html#contact">For More Information</a>
   <a class="btn btn-primary" href="tel:+16468206777">Call (646) 820-6777</a>
@@ -993,6 +943,64 @@
           <li><span class="num">4</span><span>Managing your digital life without being rude.</span></li>
           <li><span class="num">5</span><span>A masterclass in dining etiquette, from appetizers to dessert.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS COVERED IN THE CLASSES -->
+  <!-- BEGINNER NOTE: this section used to be its own page ("6 Track
+       Curriculum" / course.html). It's moved here because these are
+       the detailed topics behind "What You'll Learn" above, all part
+       of the Etiquette & Graces program rather than a separate
+       program of their own. It reuses the same "course-card" styling
+       (marble background at .55 opacity) as before — just relabeled
+       from "Track" to "Topic" since "Track" is now used specifically
+       on the Legi'tPro page. To edit a topic's title or description,
+       find its "Topic" number in the text and change the wording
+       inside the h4 or p tags. -->
+  <section class="section section-course" id="topics">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Topics Covered in the Classes</h2>
+      </div>
+      <p class="course-intro reveal">
+        The full expression of everything covered under "What You'll Learn" above
+        &mdash; organized into six focused topics, from first impressions to formal
+        dining, for students, young professionals, and adults ready to build
+        lasting confidence.
+      </p>
+
+      <div class="course-grid reveal">
+        <div class="course-card">
+          <div class="num">Topic 1</div>
+          <h4>Foundations &amp; First Impressions</h4>
+          <p>What etiquette really is, why heartfelt manners never go out of style, and how posture and presence create an instant, welcoming first impression.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Topic 2</div>
+          <h4>The Handshake &amp; Introductions</h4>
+          <p>The mechanics of a confident handshake, plus how to introduce people gracefully and in the right order, in any setting.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Topic 3</div>
+          <h4>Names &amp; Conversation</h4>
+          <p>Recovering smoothly when a name slips your mind, and reading the room to keep table conversation balanced and inclusive.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Topic 4</div>
+          <h4>Digital Discretion &amp; Style Foundations</h4>
+          <p>Managing phones and devices respectfully, and building a polished, professional wardrobe foundation for women and men alike.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Topic 5</div>
+          <h4>Style Pitfalls &amp; Formal Dining</h4>
+          <p>The wardrobe missteps that undercut a polished look, plus how to read a formal table and navigate proper napkin etiquette.</p>
+        </div>
+        <div class="course-card">
+          <div class="num">Topic 6</div>
+          <h4>Dining Mechanics &amp; Polished Finish</h4>
+          <p>Bread, drinks, passing dishes, and soup &mdash; the small physical details of confident dining &mdash; and how to handle mistakes gracefully to close out any occasion.</p>
+        </div>
       </div>
     </div>
   </section>

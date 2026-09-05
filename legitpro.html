@@ -874,56 +874,6 @@
   a.badge-pill{cursor:pointer; transition:transform .25s ease, box-shadow .25s ease;}
   a.badge-pill:hover{transform:translateY(-2px); box-shadow:0 10px 20px -10px rgba(201,154,68,.5);}
 
-  /* ===== LEGI'TPRO: PRICING PASSWORD GATE ===== */
-  /* Unlike the old legitpro.html, the password gate now only wraps
-     the PRICING numbers, not the whole page — the mission and track
-     grid above are fully public. See the two-step JS at the bottom of
-     legitpro.html for how the gate/unlock logic works. */
-  .pricing-gate{
-    margin-top:52px;
-    background:rgba(251,244,233,.04);
-    border:1px solid rgba(201,154,68,.2);
-    border-radius:12px;
-    padding:44px clamp(22px,4vw,48px);
-    text-align:center;
-    max-width:480px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .pricing-gate h3{
-    font-family:var(--font-display);
-    color:var(--ivory);
-    font-size:1.4rem;
-    margin:0 0 8px;
-  }
-  .pricing-gate p{color:#cfc8ba; font-size:.9rem; margin:0 0 20px;}
-  .pricing-gate input[type="password"]{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:1px solid rgba(251,244,233,.3);
-    background:rgba(251,244,233,.08);
-    color:var(--ivory);
-    font-size:1rem;
-    font-family:var(--font-body);
-    margin-bottom:14px;
-  }
-  .pricing-gate input[type="password"]::placeholder{color:#a09888;}
-  .pricing-gate button{
-    width:100%;
-    padding:12px 14px;
-    border-radius:6px;
-    border:none;
-    background:var(--terracotta);
-    color:var(--ivory);
-    font-family:var(--font-body);
-    font-weight:600;
-    font-size:1rem;
-    cursor:pointer;
-  }
-  .pricing-gate button:hover{background:var(--terracotta-deep);}
-  .pricing-gate-error{color:#e3a08c; font-size:.85rem; margin-top:12px; display:none;}
-
 </style>
 </head>
 <body>
@@ -938,7 +888,6 @@
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-      <a href="course.html">6 Track Curriculum</a>
       <a href="legitpro.html">Legi'tPro&trade;</a>
       <a href="index.html#contact">For More Information</a>
       <a class="btn btn-outline" href="tel:+16468206777">(646) 820-6777</a>
@@ -953,7 +902,6 @@
 <div class="mobile-panel" id="mobilePanel">
   <a href="index.html">Home</a>
   <a href="etiquette-graces.html">Etiquette &amp; Graces</a>
-  <a href="course.html">6 Track Curriculum</a>
   <a href="legitpro.html">Legi'tPro&trade;</a>
   <a href="index.html#contact">For More Information</a>
   <a class="btn btn-primary" href="tel:+16468206777">Call (646) 820-6777</a>
@@ -982,7 +930,7 @@
 
       <!-- SERVICE TRACKS -->
       <div class="lp-tracks-head reveal">
-        <span class="lp-eyebrow">Training &amp; Development Tracks</span>
+        <span class="lp-eyebrow">6 Track Curriculum</span>
         <h3>Built for Every Level of Public Service</h3>
       </div>
 
@@ -1045,63 +993,16 @@
       </div>
 
       <!-- BEGINNER NOTE: this box is for people who already had a
-           consultation with Lynette about Legi'tPro. It points them
-           to the password box just below on this same page, instead
-           of a separate file like before. -->
+           consultation with Lynette about Legi'tPro. It links out to
+           a separate, standalone password-protected page
+           (legitpro-pricing.html) that holds the actual pricing —
+           this page itself only shows the public mission and tracks. -->
       <div class="reveal" style="text-align:center; margin:20px auto 0; max-width:520px; padding-top:16px; border-top:1px solid rgba(251,244,233,.15);">
         <p style="margin:0 0 4px; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--brass);">For Legi'tPro Consultation Clients</p>
         <p style="margin:0; color:#a09888; font-size:.85rem;">
           Already booked a consultation with Lynette about Legi'tPro?
-          Enter your password below to view pricing.
+          <a href="legitpro-pricing.html" style="color:var(--brass); text-decoration:underline;">View pricing here</a>.
         </p>
-      </div>
-
-      <!-- TRAINING INVESTMENT (password-protected) -->
-      <!--
-        BEGINNER NOTE — how this password box works:
-        Only THIS pricing section is hidden behind a password — the
-        mission and tracks above are public. "#pricing-gate" is the
-        password box; "#pricing-content" is the actual pricing table,
-        which starts hidden (display:none in its style attribute) and
-        is only shown once the correct password is entered.
-
-        This is a static website (no server/database), so this keeps
-        casual visitors out but is NOT real bank-level security — the
-        password lives in this page's own code. Don't put anything
-        here you wouldn't want a determined person to eventually see.
-
-        TO CHANGE THE PASSWORD: search this file for
-        "const SITE_PASSWORD" (in the script near the bottom of the
-        page) and replace the text between the quotes.
-      -->
-      <div class="pricing-gate reveal" id="pricing-gate">
-        <h3>Training Investment</h3>
-        <p>Enter the password Lynette provided to view current pricing.</p>
-        <input type="password" id="gate-password" placeholder="Password" autocomplete="off">
-        <button type="button" id="gate-submit">View Pricing</button>
-        <div class="pricing-gate-error" id="gate-error">That password isn't right. Please try again, or contact Lynette for the password.</div>
-      </div>
-
-      <div class="lp-pricing reveal" id="pricing-content" style="display:none;">
-        <h3>Training Investment</h3>
-        <p class="lp-pricing-sub">Flexible pricing for individual participants, office cohorts, and city/state contracts. Custom proposals available.</p>
-        <div class="lp-pricing-grid">
-          <div class="lp-tier">
-            <div class="lp-tier-label">Individual Participants</div>
-            <div class="lp-tier-price">$295 &ndash; $1,295 <small style="font-size:.55em; font-weight:400;">/ person</small></div>
-            <div class="lp-tier-desc">Beginner through Advanced levels. Ideal for staff sent by elected officials or self-sponsored registrants.</div>
-          </div>
-          <div class="lp-tier">
-            <div class="lp-tier-label">Group &amp; Office Packages</div>
-            <div class="lp-tier-price">$3,500 &ndash; $12,000</div>
-            <div class="lp-tier-desc">Teams of up to 20 staff. Includes District Essentials Package, Constituent Excellence Program, and Leadership &amp; Strategic Alignment Retreat.</div>
-          </div>
-          <div class="lp-tier">
-            <div class="lp-tier-label">Annual Contracts</div>
-            <div class="lp-tier-price">$15,000 &ndash; $60,000</div>
-            <div class="lp-tier-desc">Silver, Gold, and Platinum subscription plans for City or State agencies seeking continuous development for their teams.</div>
-          </div>
-        </div>
       </div>
 
       <!-- CONTACT -->
@@ -1172,41 +1073,5 @@
     revealEls.forEach(el => el.classList.add('in'));
   }
 </script>
-
-<script>
-  // ============================================================
-  // PRICING PASSWORD GATE — see the big comment above the
-  // "pricing-gate" box in the HTML for how this fits together.
-  // ============================================================
-  const SITE_PASSWORD = "LegitProVIP2026";
-
-  const priceGate = document.getElementById('pricing-gate');
-  const priceContent = document.getElementById('pricing-content');
-  const gatePasswordInput = document.getElementById('gate-password');
-  const gateSubmitBtn = document.getElementById('gate-submit');
-  const gateErrorMsg = document.getElementById('gate-error');
-
-  function checkPricingPassword() {
-    if (gatePasswordInput.value === SITE_PASSWORD) {
-      priceGate.style.display = 'none';
-      priceContent.style.display = 'block';
-      sessionStorage.setItem('legitproUnlocked', 'yes');
-    } else {
-      gateErrorMsg.style.display = 'block';
-    }
-  }
-
-  gateSubmitBtn.addEventListener('click', checkPricingPassword);
-  gatePasswordInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') checkPricingPassword();
-  });
-
-  // Skip the gate automatically if already unlocked earlier in this tab.
-  if (sessionStorage.getItem('legitproUnlocked') === 'yes') {
-    priceGate.style.display = 'none';
-    priceContent.style.display = 'block';
-  }
-</script>
-
 </body>
 </html>
